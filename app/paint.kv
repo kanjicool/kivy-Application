@@ -1,4 +1,15 @@
 #:kivy 1.0.9
+<MyButton>
+    background_normal : 'button_normal.png'
+    background_normal : 'button_down.png'
+    border : (3,3,3,3)
+
+<ColorButton@MyButton>
+    group : 'color'
+
+<LineWidthButton@MyButton>
+    group : 'linewidth'
+
 <CanvasWidget>
     Button:
         text:'Clear'
@@ -20,14 +31,11 @@
         width: 80
         height : 120
 
-        ToggleButton:
-            group:'linewidth'
+        LineWidthButton:
             text : 'Thin'
-        ToggleButton:
-            group: 'linewidth'
+        LineWidthButton:
             text : 'Normal'
-        ToggleButton:
-            group: 'linewigth'
+        LineWidthButton:
             text : 'Thick'
 
     BoxLayout:
@@ -39,10 +47,8 @@
         width : root.width
         height: 40
 
-        ToggleButton:
-            group: 'color'
+        ColorButton:
             text: 'Red'
-        ToggleButton:
-            group: 'color'
+        ColorButton:
             text: 'Bule'
         
