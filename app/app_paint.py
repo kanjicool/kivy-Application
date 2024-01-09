@@ -25,9 +25,14 @@ class CanvasWidget(Widget):
         self.canvas.add(Color(*new_color))
 
     def on_touch_down(self, touch):
+        if Widget.on_touch_down(self, touch):
+            return print("yett")
+        
         with self.canvas:
             Line(circle=(touch.x, touch.y, 25), width = 4)
         
+    def clear_canvas(self):
+        self.canvas.clear()
 
 if __name__ == "__main__":
     from kivy.core.window import Window
