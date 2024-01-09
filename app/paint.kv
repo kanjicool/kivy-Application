@@ -1,7 +1,10 @@
 #:kivy 1.0.9
+#:import C kivy.utils.get_color_from_hex
+# from kivy.utils import get_color_froom_hex as C
+
 <MyButton>
-    background_normal : 'button_normal.png'
-    background_normal : 'button_down.png'
+    background_normal : 'sigma_cat.png'
+    background_normal : 'sigma_cat.png'
     border : (3,3,3,3)
 
 <ColorButton@MyButton>
@@ -9,6 +12,7 @@
 
 <LineWidthButton@MyButton>
     group : 'linewidth'
+    background_color : C('#808080')
 
 <CanvasWidget>
     Button:
@@ -16,8 +20,8 @@
         font_size:20
         right: root.right
         top:root.top
-        width:80
-        height:40
+        width:100
+        height:60
         background_normal : 'ytexe.png'
         background_down : 'ytexe.png'
         border: (2,2,2,2)
@@ -48,7 +52,9 @@
         height: 40
 
         ColorButton:
+            background_color : C('#FF0000')
             text: 'Red'
         ColorButton:
             text: 'Bule'
+            background_color : C('#0000FF')
         
