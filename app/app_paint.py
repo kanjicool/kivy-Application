@@ -4,6 +4,7 @@ from kivy.utils import get_color_from_hex
 from kivy.config import Config
 from kivy.uix.behaviors import ToggleButtonBehavior
 from kivy.uix.togglebutton import ToggleButton
+from kivy.graphics import Color, Line
 
 class MyButton(ToggleButton):
     def _do_press(self):
@@ -15,10 +16,13 @@ class MyButton(ToggleButton):
 class PaintApp(App):
     def build(self):
         self.canvas_widget = CanvasWidget()
+        self.canvas_widget.set_color(get_color_from_hex('#2980b9'))
         return self.canvas_widget
 
 class CanvasWidget(Widget):
-    pass
+    def set_color(self, new_color):
+        self.last_color = new_color
+        self.canvas.add(Color(*new_color))
 
 
 if __name__ == "__main__":
