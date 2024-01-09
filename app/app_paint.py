@@ -32,7 +32,12 @@ class CanvasWidget(Widget):
             Line(circle=(touch.x, touch.y, 25), width = 4)
         
     def clear_canvas(self):
+        saved = self.children[:]
+        self.clear_widgets()
         self.canvas.clear()
+        for widget in saved:
+            self.add_widget(widget)
+        self.set_color(self.last_color)
 
 if __name__ == "__main__":
     from kivy.core.window import Window
