@@ -19,7 +19,7 @@ class PaintApp(App):
         return self.canvas_widget
 
 class CanvasWidget(Widget):
-    line_width = 2 
+    line_width = 2
     def set_color(self, new_color):
         self.last_color = new_color
         self.canvas.add(Color(*new_color))
@@ -42,6 +42,9 @@ class CanvasWidget(Widget):
         for widget in saved:
             self.add_widget(widget)
         self.set_color(self.last_color)
+
+    def set_line_width(self, line_width = 'Normal'):
+        self.line_width = {'Thin' : 1, 'Normal' : 2, 'Thick' : 4}[line_width]
 
 if __name__ == "__main__":
     from kivy.core.window import Window
