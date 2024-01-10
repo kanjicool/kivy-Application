@@ -14,7 +14,7 @@
 <LineWidthButton@MyButton>
     group : 'linewidth'
     background_color : C('#808080')
-
+    on_release: app.canvas_widget.set_line_width(self.text)
 <CanvasWidget>
     Button:
         text:'Clear'
