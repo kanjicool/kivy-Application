@@ -46,6 +46,10 @@ class CanvasWidget(Widget):
     def set_line_width(self, line_width = 'Normal'):
         self.line_width = {'Thin' : 1, 'Normal' : 2, 'Thick' : 4}[line_width]
 
+    def undo(self):
+        if self.canvas.children: # Check if there are lines to undo
+            self.canvas.remove(self.canvas.children[-1])  # Remove it
+
 if __name__ == "__main__":
     from kivy.core.window import Window
     Config.set('graphics', 'width', '960')
