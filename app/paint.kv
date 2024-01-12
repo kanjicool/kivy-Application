@@ -39,6 +39,17 @@
         border: (2, 2, 2, 2)
         on_release: root.undo()
 
+    Button:
+        text: 'Pencil'
+        font_size: 20
+        right: root.right
+        top: root.top - self.height *2 # Position below Clear button
+        width: 100
+        height: 60
+        # background_normal: 'pencil_button.png'  # Replace with your image
+        # background_down: 'pencil_button.png'
+        border: (2, 2, 2, 2)
+        on_release: root.set_mode('pencil')  # Bind to the s
 
     BoxLayout:
         orientation:'vertical'
