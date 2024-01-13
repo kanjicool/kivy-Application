@@ -20,15 +20,17 @@ class PaintApp(App):
 
 class CanvasWidget(Widget):
     line_width = 2
-    mode = 'pencil'
+    mode = ''
     
     def set_mode(self, mode):
         self.mode = mode
         if mode == 'pencil':
             self.canvas.add(Color(*self.last_color))
             self.line_width = 2  # Set default line width for pencil
-        else:  # Assuming 'erase' mode
-            self.canvas.add(Color(1, 1, 1, 0))
+        elif mode == 'eraser':
+            self.canvas.add(Color(1, 1, 1, .9))
+            self.line_width = 10
+        
     
     def set_color(self, new_color):
         self.last_color = new_color
@@ -45,13 +47,10 @@ class CanvasWidget(Widget):
     
     def on_touch_move(self, touch):
         if 'current_line' in touch.ud:
-            touch.ud['current_line'].points += (touch.x, touch.y)
-        else:  # Drawing mode (pencil or normal)
-            if 'current_line' in touch.ud:
-                if self.mode == 'pencil' and 'line_width' in touch.ud:
-                    lw = touch.ud['line_width']  # Use stored line width for pencil
+                if self.mode == 'eraser':
+                    lw = self.line_width  # Use fixed line width for eraser
                 else:
-                    lw = self.line_width
+                    lw = self.line_width # Use stored line width for other modes
                 touch.ud['current_line'].points += (touch.x, touch.y)
                 touch.ud['current_line'].width = lw
     
