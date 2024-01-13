@@ -51,6 +51,16 @@
         border: (2, 2, 2, 2)
         on_release: root.set_mode('pencil')  # Bind to the s
 
+    Button:
+        text: 'Eraser'
+        font_size: 20
+        right: root.right
+        top: root.top - self.height * 4  # Position below Pencil button
+        width: 100
+        height: 60
+        border: (2, 2, 2, 2)
+        on_release: root.set_mode('eraser')  # Bind to the eraser mode
+
     BoxLayout:
         orientation:'vertical'
         padding:2
